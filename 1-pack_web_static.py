@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-#A fabric script that generates a .tgz archive from the content
+# A fabric script that generates a .tgz archive from the content
 
 from datetime import datetime
 from fabric.api import local
 import os.path
+
 
 def do_pack():
     """
@@ -19,8 +20,6 @@ def do_pack():
     if result.failed:
         return None
     else:
-        archive_path = os.path.join("versions", archive_name)
-        print("web_static packed: {} -> {}Bytes".format(archive_path, os.path.getsize(archive_path)))
-        return archive_path
-
-
+        archive_size = os.path.getsize(file)
+        print(f"web_static packed: {file} -> {archive_size} Bytes")
+        return file
